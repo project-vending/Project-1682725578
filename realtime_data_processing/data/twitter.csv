@@ -1,0 +1,13 @@
+python
+import csv
+
+def write_twitter_data(data):
+    """
+    Write Twitter data to a CSV file in the data folder
+    """
+    file_path = "realtime_data_processing/data/twitter.csv"
+
+    # Use 'a' to append new data to the file
+    with open(file_path, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(data)
