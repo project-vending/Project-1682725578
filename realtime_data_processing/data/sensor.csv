@@ -1,0 +1,23 @@
+python
+import csv
+
+# Define the folder and file paths
+folder_path = "realtime_data_processing/data"
+file_path = "sensor.csv"
+
+# Define the data to write to the file
+data = [
+    {"timestamp": "2022-01-01 00:00:00", "sensor_name": "sensor1", "value": 10},
+    {"timestamp": "2022-01-01 00:01:00", "sensor_name": "sensor1", "value": 12},
+    {"timestamp": "2022-01-01 00:02:00", "sensor_name": "sensor1", "value": 11},
+    {"timestamp": "2022-01-01 00:00:00", "sensor_name": "sensor2", "value": 20},
+    {"timestamp": "2022-01-01 00:01:00", "sensor_name": "sensor2", "value": 22},
+    {"timestamp": "2022-01-01 00:02:00", "sensor_name": "sensor2", "value": 21},
+]
+
+# Create the file and write the data
+with open(f"{folder_path}/{file_path}", "w", newline="") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=["timestamp", "sensor_name", "value"])
+    writer.writeheader()
+    for row in data:
+        writer.writerow(row)
